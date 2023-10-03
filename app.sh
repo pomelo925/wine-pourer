@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## 開啟 port 權限
+sudo chmod 777 /dev/ttyUSB0
+
 ## 開啟程式權限
 chmod +x arduino/write.py
 chmod +x monitor/app.py
