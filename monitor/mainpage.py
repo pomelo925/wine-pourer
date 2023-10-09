@@ -29,14 +29,14 @@ def update_data_text_right():
     # beer_temperature_right = read_value_from_csv('啤酒溫度')
     beer_temperature_right = 1
     tray_weight_right = read_value_from_csv('重量')
-    # co2_concentration_right = read_value_from_csv('CO2濃度')
-    co2_concentration_right = 1
+    co2_concentration_right = read_value_from_csv('壓力')
+    # co2_concentration_right = 1
     # cumulative_liquor_volume_right = read_value_from_csv('累積出酒量')
     cumulative_liquor_volume_right = 1
 
     data_text_right = f"""
 \n啤酒溫度 (°C)：{beer_temperature_right}  托盤重量 (g)：{tray_weight_right}
-CO2濃度 (g/L)：{co2_concentration_right}   累積出酒量 (L)：{cumulative_liquor_volume_right}     \n"""
+氣壓 (kPa)：{co2_concentration_right}   累積出酒量 (L)：{cumulative_liquor_volume_right}     \n"""
 
     return data_text_right
 
@@ -45,14 +45,14 @@ def update_data_text_left():
     # beer_temperature_left = read_value_from_csv('啤酒溫度')
     beer_temperature_left = 1
     tray_weight_left = read_value_from_csv('重量')
-    # co2_concentration_left = read_value_from_csv('CO2濃度')
-    co2_concentration_left = 1
+    co2_concentration_left = read_value_from_csv('壓力')
+    # co2_concentration_left = 1
     # cumulative_liquor_volume_left = read_value_from_csv('累積出酒量')
     cumulative_liquor_volume_left = 1
 
     data_text_left = f"""
 \n啤酒溫度 (°C)：{beer_temperature_left}  托盤重量 (g)：{tray_weight_left}
-CO2濃度 (g/L)：{co2_concentration_left}   累積出酒量 (L)：{cumulative_liquor_volume_left}     \n"""
+氣壓 (kPa)：{co2_concentration_left}   累積出酒量 (L)：{cumulative_liquor_volume_left}     \n"""
 
     return data_text_left
 
