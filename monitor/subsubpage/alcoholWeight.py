@@ -2,7 +2,7 @@ import tkinter as tk
 import csv
 from header import create_top_bar
 
-class TemperaturePage(tk.Frame):
+class AlcoholWeightPage(tk.Frame):
     def __init__(self, master, controller):
         tk.Frame.__init__(self, master)
         self.controller = controller
@@ -13,7 +13,7 @@ class TemperaturePage(tk.Frame):
         button1.pack(fill=tk.X)
         
         # Title
-        label_title = tk.Label(self, text="警示啤酒溫度範圍設定", font=("Helvetica", 20))
+        label_title = tk.Label(self, text="出酒重量設定", font=("Helvetica", 20))
         label_title.pack(pady=20)  # 位於return按鈕下方，置中
         
         # 使用Frame來組合滑桿和文字
@@ -22,24 +22,24 @@ class TemperaturePage(tk.Frame):
         
         # 滑桿設置
         self.slider_value = tk.IntVar()
-        self.slider = tk.Scale(center_frame, from_=50, to=-50, orient=tk.VERTICAL, 
+        self.slider = tk.Scale(center_frame, from_=180, to=0, orient=tk.VERTICAL, 
                                variable=self.slider_value, command=self.update_value,
                                length=250, sliderlength=40, width=80)
         self.slider.set(0)  
         self.slider.grid(row=0, column=0, padx=20)  # 使用grid佈局
         
         # 警示文字
-        self.alert_label = tk.Label(center_frame, text=f"高於{self.slider.get()}度C跳出溫度警示", font=("Helvetica", 18), fg="red")
+        self.alert_label = tk.Label(center_frame, text=f"出酒重量為{self.slider.get()}公克(g)", font=("Helvetica", 18), fg="red")
         self.alert_label.grid(row=0, column=1, padx=20)  # 使用grid佈局，且位於滑桿右側
 
         # 從CSV讀取值
-        initial_value = self.read_value_from_csv("Temperature")
+        initial_value = self.read_value_from_csv("AlocholWeight")
         self.slider.set(initial_value if initial_value is not None else 0)
 
     def update_value(self, value):
-        self.alert_label.config(text=f"高於{value}度C跳出警示")
-        self.save_value_to_csv("Temperature",value) # 存至 CSV 中
-
+        self.alert_label.config(text=f"出酒重量為{value}公克(g)")
+        self.save_value_to_csv("AlocholWeight",value) # 存至 CSV 中
+    
     def read_value_from_csv(self, setting_name):
         try:
             with open('monitor/settings.csv', 'r', newline='') as file:
@@ -53,7 +53,6 @@ class TemperaturePage(tk.Frame):
             print(f"Error reading csv: {e}")
             return None
     
-
     def save_value_to_csv(self, setting_name, value):
         settings = {}
         try:
@@ -72,9 +71,8 @@ class TemperaturePage(tk.Frame):
                 for key, value in settings.items():
                     writer.writerow([key, value])
         except Exception as e:
-            print(f"Error writing to csv: {e}")    
-            
-             
+            print(f"Error writing to csv: {e}")
+    
     def go_to_mainpage(self):
         from subpage.settings import SettingsPage
         self.controller.show_frame(SettingsPage)

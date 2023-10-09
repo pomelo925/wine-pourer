@@ -6,6 +6,12 @@ from mainpage import MainPage
 from subpage.settings import SettingsPage
 from subpage.introduction import IntroductionPage
 from subsubpage.temperature import TemperaturePage
+from subsubpage.beerUpperBond import BeerUpperBondPage
+from subsubpage.ceaseAngle import CeaseAnglePage
+from subsubpage.alcoholAngle import AlcoholAnglePage
+from subsubpage.alcoholWeight import AlcoholWeightPage
+from subsubpage.bubbleAngle import BubbleAnglePage
+from subsubpage.bubbleWeight import BubbleWeightPage
 
 class App(tk.Tk):
     def __init__(self):
@@ -21,7 +27,13 @@ class App(tk.Tk):
         self.frames = {}
         
         # 循環創建子頁面並儲存到 self.frames 字典中
-        for F in (MainPage, SettingsPage, TemperaturePage, IntroductionPage):
+        pages = (
+            MainPage, IntroductionPage, SettingsPage, 
+            BeerUpperBondPage, TemperaturePage, CeaseAnglePage, AlcoholAnglePage,
+            BubbleAnglePage, BubbleWeightPage, AlcoholWeightPage
+        )
+
+        for F in pages:
             frame = F(self, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")

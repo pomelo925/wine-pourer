@@ -23,12 +23,20 @@ class SettingsPage(tk.Frame):
             "出酒重量設定", "出泡重量設定"
         ]
 
-        # General mapping of button names to functions
+        # 一般名字 (等待變成下方的具體實作)
         button_functions = {name: lambda name=name: self.dummy_command(name) for name in button_names}
         
-        # Special mapping for specific buttons
+        # 針對每個功能的子頁面
         button_functions["警示啤酒溫度範圍"] = self.go_to_temperature
+        button_functions["啤酒出酒上限"] = self.go_to_beerUpperBond
+        button_functions["停止模式角度設定"] = self.go_to_ceaseAngle
+        button_functions["出酒模式角度設定"] = self.go_to_alcoholAngle
+        button_functions["出酒泡模式角度設定"] = self.go_to_bubbleAngle
+        button_functions["出酒重量設定"] = self.go_to_alcoholWeight
+        button_functions["出泡重量設定"] = self.go_to_bubbleWeight
         
+        
+        # 按鈕排版
         for i in range(0, len(button_names), 2):
             frame = tk.Frame(self)
             frame.pack(fill=tk.X)
@@ -51,4 +59,30 @@ class SettingsPage(tk.Frame):
     def go_to_temperature(self):
         from subsubpage.temperature import TemperaturePage
         self.controller.show_frame(TemperaturePage)
+    
+    def go_to_beerUpperBond(self):
+        from subsubpage.beerUpperBond import BeerUpperBondPage
+        self.controller.show_frame(BeerUpperBondPage)
+
+    def go_to_ceaseAngle(self):
+        from subsubpage.ceaseAngle import CeaseAnglePage
+        self.controller.show_frame(CeaseAnglePage)
+
+    def go_to_alcoholAngle(self):
+        from subsubpage.alcoholAngle import AlcoholAnglePage
+        self.controller.show_frame(AlcoholAnglePage)
+        
+    def go_to_bubbleAngle(self):
+        from subsubpage.bubbleAngle import BubbleAnglePage
+        self.controller.show_frame(BubbleAnglePage)
+        
+    def go_to_bubbleWeight(self):
+        from subsubpage.bubbleWeight import BubbleWeightPage
+        self.controller.show_frame(BubbleWeightPage)
+
+    def go_to_alcoholWeight(self):
+        from subsubpage.alcoholWeight import AlcoholWeightPage
+        self.controller.show_frame(AlcoholWeightPage)
+
+
 
