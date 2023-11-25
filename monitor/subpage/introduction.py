@@ -36,15 +36,15 @@ class IntroductionPage(tk.Frame):
 
         # 文字敘述顯示
         description = self.read_description_from_file(self.descriptions_paths[self.current_index])
-        self.desc_label = tk.Label(self.content_frame, text=description, wraplength=200)
+        self.desc_label = tk.Label(self.content_frame, text=description, wraplength=280, font=("Arial", 14), justify=tk.LEFT)
         self.desc_label.grid(row=1, column=1, padx=10, pady=10)
 
         # 切換按鈕
         self.prev_button = tk.Button(self.content_frame, text="上張", command=self.prev_image)
-        self.prev_button.grid(row=2, column=0, pady=10, sticky='w')  # 注意增加了 sticky='w' 
+        self.prev_button.grid(row=2, column=0, pady=10, sticky='w')  
 
         self.next_button = tk.Button(self.content_frame, text="下張", command=self.next_image)
-        self.next_button.grid(row=2, column=1, pady=10, sticky='e')  # 注意增加了 sticky='e' 
+        self.next_button.grid(row=2, column=1, pady=10, sticky='e')  
 
         # 返回主頁面的按鈕
         button = tk.Button(self, text="Return", command=self.go_to_mainpage, height=5, font=("Arial", 20))

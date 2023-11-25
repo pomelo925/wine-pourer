@@ -4,7 +4,6 @@
 
 ## 給予其他腳本權限
 chmod +x app.sh
-chmod +x ros2.sh
 
 ## 更新套件庫
 sudo apt-get update
