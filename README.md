@@ -43,11 +43,11 @@ for F in (MainPage, SettingsPage, TempPage, NewPage):  # 添加 NewPage
 ```python=
 # 例如，在 MainPage 中
 button = tk.Button(self, text="New Page",
-                   command=self.go_to_new)
+                   command=self.go_to_mainpage)
 button.pack()
 
 # 添加一個新方法來處理跳轉
-def go_to_new(self):
-    from newpage import NewPage  # 延遲導入
-    self.controller.show_frame(NewPage)
+def go_to_mainpage(self):
+    from subpage.settings import SettingsPage
+    self.controller.show_frame(SettingsPage)
 ```

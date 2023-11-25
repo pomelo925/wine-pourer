@@ -1,7 +1,9 @@
 BubbleWeight,6
-AlocholWeight,134
-AlcoholAngle,125
+AlocholWeight,87
+AlcoholAngle,94
 BeerUpperBond,380
-CeaseAngle,100
-BubbleAngle,131
-Temperature,18
+CeaseAngle,119
+BubbleAngle,100
+Temperature,19
+Angle-Servo-1,60
+Angle-Servo-2,104

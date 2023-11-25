@@ -26,16 +26,19 @@ class AlcoholAnglePage(tk.Frame):
                                variable=self.slider_value, command=self.update_value,
                                length=250, sliderlength=40, width=80)
         self.slider.set(0)  
-        self.slider.grid(row=0, column=0, padx=20)  # 使用grid佈局
+        self.slider.grid(row=0, column=0, padx=20) 
         
         # 警示文字
         self.alert_label = tk.Label(center_frame, text=f"出酒模式角度為{self.slider.get()}度", font=("Helvetica", 18), fg="red")
         self.alert_label.grid(row=0, column=1, padx=20)  # 使用grid佈局，且位於滑桿右側
 
         # 從CSV讀取值
-        initial_value = self.read_value_from_csv("AlcoholWeight")
+        initial_value = self.read_value_from_csv("AlcoholAngle")
         self.slider.set(initial_value if initial_value is not None else 0)
 
+    ###
+    # CSV Handle 
+    ###
 
     def update_value(self, value):
         self.alert_label.config(text=f"出酒模式角度為{value}度")

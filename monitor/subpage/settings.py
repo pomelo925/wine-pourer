@@ -27,14 +27,17 @@ class SettingsPage(tk.Frame):
         button_functions = {name: lambda name=name: self.dummy_command(name) for name in button_names}
         
         # 針對每個功能的子頁面
-        button_functions["警示啤酒溫度範圍"] = self.go_to_temperature
         button_functions["啤酒出酒上限"] = self.go_to_beerUpperBond
-        button_functions["停止模式角度設定"] = self.go_to_ceaseAngle
+        button_functions["警示啤酒溫度範圍"] = self.go_to_temperature
+
+        button_functions["伺服馬達手動設定"] = self.go_to_manualServo
         button_functions["出酒模式角度設定"] = self.go_to_alcoholAngle
         button_functions["出酒泡模式角度設定"] = self.go_to_bubbleAngle
+        button_functions["停止模式角度設定"] = self.go_to_ceaseAngle
+
         button_functions["出酒重量設定"] = self.go_to_alcoholWeight
         button_functions["出泡重量設定"] = self.go_to_bubbleWeight
-        
+
         
         # 按鈕排版
         for i in range(0, len(button_names), 2):
@@ -83,6 +86,10 @@ class SettingsPage(tk.Frame):
     def go_to_alcoholWeight(self):
         from subsubpage.alcoholWeight import AlcoholWeightPage
         self.controller.show_frame(AlcoholWeightPage)
+
+    def go_to_manualServo(self):
+        from subsubpage.manualServo import ManualServoPage
+        self.controller.show_frame(ManualServoPage)
 
 
 

@@ -14,4 +14,5 @@ sudo apt install python3-pip
 sudo apt install raspi-config -y
 python -m pip install pyserial
 sudo apt-get install -y i2c-tools python3-smbus
+pip install watchdog
 pip install Pillow

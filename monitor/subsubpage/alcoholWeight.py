@@ -36,6 +36,10 @@ class AlcoholWeightPage(tk.Frame):
         initial_value = self.read_value_from_csv("AlocholWeight")
         self.slider.set(initial_value if initial_value is not None else 0)
 
+    ###
+    # CSV Handle 
+    ###
+    
     def update_value(self, value):
         self.alert_label.config(text=f"出酒重量為{value}公克(g)")
         self.save_value_to_csv("AlocholWeight",value) # 存至 CSV 中
