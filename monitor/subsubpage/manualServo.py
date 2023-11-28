@@ -60,10 +60,10 @@ class ManualServoPage(tk.Frame):
     def read_value_from_csv(self, setting_name):
         try:
             with open('monitor/settings.csv', 'r', newline='') as file:
-                reader = csv.DictReader(file)
+                reader = csv.reader(file)
                 for row in reader:
-                    if row['setting'] == setting_name:
-                        return int(row['value'])
+                    if row[0] == setting_name:
+                        return int(row[1])
         except FileNotFoundError:
             return None
         except Exception as e:

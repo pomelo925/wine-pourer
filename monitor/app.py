@@ -13,6 +13,8 @@ from subsubpage.alcoholWeight import AlcoholWeightPage
 from subsubpage.bubbleAngle import BubbleAnglePage
 from subsubpage.bubbleWeight import BubbleWeightPage
 from subsubpage.manualServo import ManualServoPage
+from subsubpage.weightDetect import WeightDetectPage
+from subsubpage.carbonSettings import CarbonSettingsPage
 
 
 class App(tk.Tk):
@@ -32,7 +34,8 @@ class App(tk.Tk):
         pages = (
             MainPage, IntroductionPage, SettingsPage, 
             BeerUpperBondPage, TemperaturePage, CeaseAnglePage, AlcoholAnglePage,
-            BubbleAnglePage, BubbleWeightPage, AlcoholWeightPage, ManualServoPage
+            BubbleAnglePage, BubbleWeightPage, AlcoholWeightPage, ManualServoPage,
+            WeightDetectPage, CarbonSettingsPage
         )
 
         for F in pages:

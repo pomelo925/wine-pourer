@@ -23,18 +23,22 @@ class SettingsPage(tk.Frame):
             "出酒重量設定", "出泡重量設定"
         ]
 
-        # 一般名字 (等待變成下方的具體實作)
+        # 預設 (將替換為下方具體實作)
         button_functions = {name: lambda name=name: self.dummy_command(name) for name in button_names}
         
         # 針對每個功能的子頁面
         button_functions["啤酒出酒上限"] = self.go_to_beerUpperBond
+        button_functions["歸零累積出酒量"] = self.amount_tare_popup
         button_functions["警示啤酒溫度範圍"] = self.go_to_temperature
+        button_functions["CO2壓力設定和警示"] = self.go_to_carbonSettings
 
         button_functions["伺服馬達手動設定"] = self.go_to_manualServo
         button_functions["出酒模式角度設定"] = self.go_to_alcoholAngle
         button_functions["出酒泡模式角度設定"] = self.go_to_bubbleAngle
         button_functions["停止模式角度設定"] = self.go_to_ceaseAngle
 
+        button_functions["重量偵測設定"] = self.go_to_weightDetect
+        button_functions["專用杯放置後重量歸零"] = self.weight_tare_popup
         button_functions["出酒重量設定"] = self.go_to_alcoholWeight
         button_functions["出泡重量設定"] = self.go_to_bubbleWeight
 
@@ -91,5 +95,54 @@ class SettingsPage(tk.Frame):
         from subsubpage.manualServo import ManualServoPage
         self.controller.show_frame(ManualServoPage)
 
+    def go_to_weightDetect(self):
+        from subsubpage.weightDetect import WeightDetectPage
+        self.controller.show_frame(WeightDetectPage)
 
+    def go_to_carbonSettings(self):
+        from subsubpage.carbonSettings import CarbonSettingsPage
+        self.controller.show_frame(CarbonSettingsPage)
 
+    def weight_tare_popup(self):
+        # Create a top-level window for the pop-up
+        popup = tk.Toplevel(self)
+        popup.title("埔樂自動精釀生啤機軟體")
+        
+        # Centering the popup on the screen
+        popup_width = 300
+        popup_height = 100
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        x_cordinate = int((screen_width/2) - (popup_width/2))
+        y_cordinate = int((screen_height/2) - (popup_height/2))
+        popup.geometry(f"{popup_width}x{popup_height}+{x_cordinate}+{y_cordinate}")
+
+        # Display message
+        message = tk.Label(popup, text="秤重盤已歸零。", font=("Helvetica", 16))
+        message.pack(pady=10)
+
+        # OK button to close the pop-up
+        ok_button = tk.Button(popup, text="確定", height=2, command=popup.destroy, font=("Helvetica", 16))
+        ok_button.pack()
+
+    def amount_tare_popup(self):
+        # Create a top-level window for the pop-up
+        popup = tk.Toplevel(self)
+        popup.title("埔樂自動精釀生啤機軟體")
+        
+        # Centering the popup on the screen
+        popup_width = 300
+        popup_height = 100
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        x_cordinate = int((screen_width/2) - (popup_width/2))
+        y_cordinate = int((screen_height/2) - (popup_height/2))
+        popup.geometry(f"{popup_width}x{popup_height}+{x_cordinate}+{y_cordinate}")
+
+        # Display message
+        message = tk.Label(popup, text="累積出酒量已歸零。", font=("Helvetica", 16))
+        message.pack(pady=10)
+
+        # OK button to close the pop-up
+        ok_button = tk.Button(popup, text="確定", height=2, command=popup.destroy, font=("Helvetica", 16))
+        ok_button.pack()

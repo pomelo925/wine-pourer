@@ -1,7 +1,8 @@
 import tkinter as tk  
 import os
 import csv
-from header import create_top_bar 
+from header import create_top_bar
+from tkinter import messagebox 
 from time import strftime
 
 ##############
@@ -14,7 +15,7 @@ def get_csv_path():
     # 獲取上級目錄
     parent_dir = os.path.dirname(script_dir)
     # 構造csv文件的完整路徑
-    csv_path = os.path.join(parent_dir, 'arduino', 'current.csv')
+    csv_path = os.path.join(parent_dir, 'esp32', 'current.csv')
     return csv_path
 
 # 從 csv 中讀取資料
@@ -55,6 +56,21 @@ def update_data_text_left():
 氣壓 (kPa)：{co2_concentration_left}   累積出酒量 (L)：{cumulative_liquor_volume_left}     \n"""
 
     return data_text_left
+
+
+# 開始注酒視窗
+def on_start_button_click():
+    # Replace this with your actual logic to check if the cup is placed
+    cup_placed = True  # Example condition
+    if cup_placed:
+        messagebox.showinfo("Info", "準備倒酒 ... 請勿移動酒杯 ...")
+    else:
+        messagebox.showerror("Error", "未偵測到重量，請先放置酒杯！")
+
+
+# 停止注酒視窗
+def on_stop_button_click():
+   messagebox.showinfo("Info", "已停止注酒，可取走酒杯。")
 
 
 ##############
@@ -103,11 +119,11 @@ class MainPage(tk.Frame):
         button_frame_left.grid(row=1, column=0)
 
         # 創建"開始注酒"按鈕
-        start_button_left = tk.Button(button_frame_left, text="開始注酒", height=2, font=("Helvetica", 25))
+        start_button_left = tk.Button(button_frame_left, text="開始注酒", height=2, font=("Helvetica", 25), command=on_start_button_click)
         start_button_left.pack(side=tk.TOP, fill=tk.X)
         
         # 創建"停止注酒"按鈕
-        stop_button_left = tk.Button(button_frame_left, text="停止注酒", height=2, font=("Helvetica", 25))
+        stop_button_left = tk.Button(button_frame_left, text="停止注酒", height=2, font=("Helvetica", 25), command=on_stop_button_click)
         stop_button_left.pack(side=tk.TOP, fill=tk.X)
         
         # 創建"設定"按鈕，點擊後轉到設定頁面
@@ -138,11 +154,11 @@ class MainPage(tk.Frame):
         button_frame_right.grid(row=1, column=0)
 
         # 創建"開始注酒"按鈕
-        start_button_right = tk.Button(button_frame_right, text="開始注酒", height=2, font=("Helvetica", 25))
+        start_button_right = tk.Button(button_frame_right, text="開始注酒", height=2, font=("Helvetica", 25), command=on_start_button_click)
         start_button_right.pack(side=tk.TOP, fill=tk.X)
         
         # 創建"停止注酒"按鈕
-        stop_button_right = tk.Button(button_frame_right, text="停止注酒", height=2, font=("Helvetica", 25))
+        stop_button_right = tk.Button(button_frame_right, text="停止注酒", height=2, font=("Helvetica", 25), command=on_stop_button_click)
         stop_button_right.pack(side=tk.TOP, fill=tk.X)
         
         # 創建"設定"按鈕，點擊後轉到設定頁面
