@@ -5,7 +5,7 @@
 1. 瀏覽至本地資料夾中，開啟終端機輸入以下指令安裝。
 
     ```
-    git clonehttps://github.com/pomelo925/wine-pourer-rpi.git
+    git clone https://github.com/pomelo925/wine-pourer-rpi.git
     ```
 2. 進入資料夾 `wine-pourer-rpi`：
     ```
@@ -109,4 +109,3 @@ def go_to_mainpage(self):
     from subpage.settings import SettingsPage
     self.controller.show_frame(SettingsPage)
 ```
-
