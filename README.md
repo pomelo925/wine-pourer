@@ -28,7 +28,7 @@
 ## B. 資料夾結構
 以下為此 repository 之資料結構說明，大部分程式碼中有註解。
 ```py
-├── esp32/  ## 與 esp32 通訊 
+├── esp32/  ## 樹梅派與 esp32 通訊之程式碼  
     └── current.csv/  # 紀錄當前 ESP32 傳遞資訊
     └── write_fromESP32/  # 資訊流： ESP32 -> 螢幕介面 
     └── write_toESP32/ # 資訊流： 螢幕介面 -> ESP32  
@@ -48,6 +48,7 @@
     └── header.py  # 介面設計：視窗最上方之橫條
     └── mainpage.py  # 定義介面邏輯
     └── settings.csv  # 設定檔
+├── wine-pourer-esp32 # esp32 晶片燒錄程式碼
 ├── resources # 關於此次專案之附錄檔案
 ├── .gitignore
 ├── app.sh  # 執行軟體程序
