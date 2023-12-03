@@ -48,6 +48,7 @@
     └── header.py  # 介面設計：視窗最上方之橫條
     └── mainpage.py  # 定義介面邏輯
     └── settings.csv  # 設定檔
+├── resources # 關於此次專案之附錄檔案
 ├── .gitignore
 ├── app.sh  # 執行軟體程序
 ├── install.sh  # 安裝軟體之依賴環境 (只須執行一次 )
